@@ -1,0 +1,503 @@
+.galleryPage {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.heroSection {
+  width: 100%;
+  height: 100vh;
+  background-color: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  scroll-snap-align: start;
+  z-index: 10;
+}
+
+.heroTitle {
+  font-family: 'WhatsHappened', 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  line-height: 2.5;
+  padding: 2rem 0;
+  overflow: visible;
+  display: block;
+  height: auto;
+  position: fixed;
+  top: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+  user-select: none;
+}
+
+.coloredLetter {
+  display: inline-block;
+  color: #ff0000;
+  filter: hue-rotate(var(--hue-rotate, 0deg));
+  transition: filter 0.1s ease-out;
+}
+
+.categoryLabelContainer {
+  margin-top: 2rem;
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 20;
+}
+
+.categoryLabel {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 1.5rem;
+  color: #666;
+  margin: 0;
+  text-align: center;
+  transition: opacity 0.3s ease;
+  background-color: transparent;
+  padding: 0.5rem 1.5rem;
+}
+
+.categoryNav {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 20;
+}
+
+.scrollArrow {
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.scrollArrow:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+
+.categoryScroll {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  max-width: 900px;
+}
+
+.categoryScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.categoryIcon {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  border: 2px solid #ddd;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+}
+
+.categoryIcon:hover {
+  transform: scale(1.2);
+  z-index: 10;
+  border-color: #666;
+}
+
+.categoryIcon.activeTag {
+  border-color: #000;
+  background-color: #f0f0f0;
+  transform: scale(1.1);
+}
+
+.categoryIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Section 2: Gallery Grid */
+.gallerySection {
+  width: 100%;
+  height: 100vh;
+  background-color: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  scroll-snap-align: start;
+  padding: 4rem;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.galleryContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galleryWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 28vh);
+  gap: 1.5rem;
+  justify-content: center;
+  position: absolute;
+}
+
+.galleryItem {
+  aspect-ratio: 1;
+  width: 28vh;
+  height: 28vh;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.galleryItem:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.galleryItem:hover .galleryImage {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-align: center;
+  padding: 1rem;
+  pointer-events: none;
+}
+
+.galleryItem:hover .overlay {
+  opacity: 1;
+}
+
+.title {
+  font-family: 'WhatsHappened', 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: transparent;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  padding: 0.2rem 0;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: url('/filler/BTC_1.6.jpeg');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: multiply;
+  overflow: visible;
+  display: block;
+  height: auto;
+}
+
+.subtitle {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 0.8rem;
+  color: transparent;
+  line-height: 1.5;
+  padding: 0.2rem 0;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: url('/filler/BTC_1.6.jpeg');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: multiply;
+  overflow: visible;
+  display: block;
+  height: auto;
+}
+
+.date {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 0.7rem;
+  color: #666;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+.pageArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-size: 1.2rem;
+  color: #333;
+  z-index: 20;
+}
+
+.pageArrow:hover:not(:disabled) {
+  opacity: 0.6;
+  transform: translateY(-50%) scale(1.2);
+}
+
+.pageArrow:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.pageArrowLeft {
+  left: 2rem;
+}
+
+.pageArrowRight {
+  right: 2rem;
+}
+
+@media (max-width: 768px) {
+  .gallerySection {
+    padding: 2rem;
+  }
+  
+  .gallery {
+    grid-template-columns: repeat(2, 28vh);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Gallery Mode Overlay */
+.galleryModeOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  overflow: hidden;
+}
+
+.closeButton {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10000;
+  transition: opacity 0.2s ease;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  opacity: 0.6;
+}
+
+.galleryModeContent {
+  display: flex;
+  gap: 4rem;
+  max-width: 1600px;
+  width: 100%;
+  height: 80vh;
+}
+
+.imageArea {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mainImage {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.imageNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.navArrow {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  padding: 0.5rem;
+}
+
+.navArrow:hover:not(:disabled) {
+  opacity: 0.6;
+}
+
+.navArrow:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.imageIndicators {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.indicator:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.activeIndicator {
+  background-color: #fff;
+}
+
+.infoSection {
+  flex: 1;
+  color: #fff;
+  overflow-y: auto;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.infoTitle {
+  font-family: 'WhatsHappened', 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.infoSubtitle {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.infoDescription {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #ddd;
+}
+
+.infoDescription p {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .galleryModeContent {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .imageArea {
+    height: 60vh;
+  }
+  
+  .infoSection {
+    max-height: 30vh;
+  }
+}

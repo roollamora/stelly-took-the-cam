@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Blog Posts</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .success {
+            background: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .error {
+            background: #dc3545;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info {
+            background: #17a2b8;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .post-list {
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .post-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .post-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Import Blog Posts</h1>
+        <p>This tool will import 20 new blog posts into your database.</p>
+        
+        <div id="status"></div>
+        
+        <button id="importBtn" onclick="importPosts()">Import 20 New Posts</button>
+        <button onclick="window.location.href='/admin'">Go to Admin Panel</button>
+        <button onclick="window.location.href='/blog'">View Blog</button>
+        
+        <div id="postList" class="post-list" style="display: none;"></div>
+    </div>
+
+    <script>
+        async function importPosts() {
+            const btn = document.getElementById('importBtn');
+            const status = document.getElementById('status');
+            const postList = document.getElementById('postList');
+            
+            btn.disabled = true;
+            status.innerHTML = '<div class="info">Loading posts...</div>';
+            
+            try {
+                // Fetch the generated posts
+                const response = await fetch('/new-blog-posts.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load posts file');
+                }
+                
+                const newPosts = await response.json();
+                
+                // Get existing posts from localStorage
+                const existingPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+                
+                // Filter out posts that already exist (by ID)
+                const existingIds = new Set(existingPosts.map(p => p.id));
+                const postsToAdd = newPosts.filter(p => !existingIds.has(p.id));
+                
+                if (postsToAdd.length === 0) {
+                    status.innerHTML = '<div class="info">All posts already exist! No new posts to import.</div>';
+                    btn.disabled = false;
+                    return;
+                }
+                
+                // Combine and save
+                const allPosts = [...existingPosts, ...postsToAdd];
+                localStorage.setItem('blogPosts', JSON.stringify(allPosts));
+                
+                // Show success message
+                status.innerHTML = `<div class="success">✅ Successfully imported ${postsToAdd.length} new blog posts!</div>`;
+                
+                // Display imported posts
+                postList.style.display = 'block';
+                postList.innerHTML = '<h3>Imported Posts:</h3>' + 
+                    postsToAdd.map(post => `
+                        <div class="post-item">
+                            <strong>${post.title}</strong><br>
+                            <small>${post.category} • ${post.date} • ${post.images.length} images</small>
+                        </div>
+                    `).join('');
+                
+                btn.textContent = 'Import Complete!';
+                
+            } catch (error) {
+                status.innerHTML = `<div class="error">❌ Error: ${error.message}</div>`;
+                btn.disabled = false;
+            }
+        }
+        
+        // Check if posts file exists on load
+        window.addEventListener('load', async () => {
+            try {
+                const response = await fetch('/new-blog-posts.json');
+                if (!response.ok) {
+                    document.getElementById('status').innerHTML = 
+                        '<div class="error">❌ Posts file not found. Make sure new-blog-posts.json is in the public folder.</div>';
+                    document.getElementById('importBtn').disabled = true;
+                }
+            } catch (error) {
+                document.getElementById('status').innerHTML = 
+                    '<div class="error">❌ Could not check for posts file.</div>';
+            }
+        });
+    </script>
+</body>
+</html>

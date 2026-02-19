@@ -1,0 +1,319 @@
+.collectionPage {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  padding-top: 0;
+}
+
+.imageSection {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: sticky;
+  top: 0;
+  background-color: #0d0d0d;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.sideArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease, color 0.2s ease;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.sideArrow:hover:not(:disabled) {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.sideArrow:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.leftArrow {
+  left: 1rem;
+}
+
+.rightArrow {
+  right: 1rem;
+}
+
+.imageNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 0;
+  position: absolute;
+  bottom: 2rem;
+}
+
+.imageIndicators {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.indicator:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.activeIndicator {
+  background-color: #fff;
+}
+
+.infoSection {
+  width: 50%;
+  padding: 2rem 4rem 4rem 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1a1a;
+}
+
+.infoContent {
+  flex: 0 0 auto;
+}
+
+.collectionTitle {
+  font-family: 'WhatsHappened', 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 3rem;
+  color: #f0f0f0;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.collectionSubtitle {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 1.5rem;
+  color: #aaa;
+  margin-bottom: 1rem;
+}
+
+.imageCount {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.photoDate {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.collectionDateRange {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 2rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.description {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #bbb;
+  margin-bottom: 3rem;
+}
+
+.collectionNav {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.collectionScroll {
+  display: flex;
+  gap: 0.8rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: #444 #1a1a1a;
+}
+
+.collectionScroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.collectionScroll::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.collectionScroll::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+.collectionScroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.collectionThumb {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+  opacity: 0.5;
+  border-radius: 0;
+}
+
+.collectionThumb:hover {
+  opacity: 0.8;
+}
+
+.collectionThumb.activeThumb {
+  border-color: #fff;
+  opacity: 1;
+}
+
+.collectionThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.relatedSection {
+  margin-top: auto;
+  padding-top: 3rem;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #444;
+  margin-bottom: 2rem;
+}
+
+.relatedTitle {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 1.2rem;
+  color: #999;
+  margin-bottom: 1.5rem;
+}
+
+.relatedCollections {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.relatedItem {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  padding: 0;
+}
+
+.relatedItem:hover {
+  opacity: 0.8;
+}
+
+.relatedImage {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border: 1px solid #333;
+  border-radius: 0;
+}
+
+.relatedInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.relatedItemTitle {
+  font-family: 'WhatsHappened', 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 0.85rem;
+  color: #ddd;
+  line-height: 1.3;
+}
+
+.relatedItemSubtitle {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 0.75rem;
+  color: #888;
+  line-height: 1.3;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    flex-direction: column;
+  }
+  
+  .imageSection {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+  }
+  
+  .imageContainer {
+    height: 60vh;
+  }
+  
+  .infoSection {
+    width: 100%;
+    padding: 2rem;
+  }
+  
+  .relatedCollections {
+    grid-template-columns: 1fr;
+  }
+}

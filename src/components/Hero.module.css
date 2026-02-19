@@ -1,0 +1,157 @@
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+  background-image: url('/DIVA-EDIT_3.0.JPG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.6) 50%, 
+    transparent 100%
+  );
+  mix-blend-mode: screen;
+  z-index: 1;
+  animation: wave 8s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    left: -100%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  40% {
+    left: 100%;
+    opacity: 1;
+  }
+  50%, 100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.textContainer {
+  position: absolute;
+  left: calc(50% + 40px);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.comingSoon {
+  font-family: 'WhatsHappened', 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 2.016rem;
+  font-weight: 700;
+  color: #000;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.05em;
+  line-height: 2.5;
+  padding: 1.5rem 0;
+  display: inline-block;
+  overflow: visible;
+}
+
+.diva {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-align: center;
+  color: #ff0000;
+  filter: hue-rotate(var(--hue-rotate, 0deg));
+  transition: filter 0.1s ease-out;
+}
+
+.letter {
+  display: inline-block;
+  animation: wobbleLetter 3s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes wobbleLetter {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(1px, -2px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  75% {
+    transform: translate(2px, 1px) rotate(0.5deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+  }
+  
+  .logo {
+    position: static;
+  }
+  
+  .logo img {
+    height: 40vh;
+  }
+  
+  .comingSoon {
+    position: static;
+    font-size: 2.5rem;
+  }
+}

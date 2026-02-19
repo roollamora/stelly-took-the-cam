@@ -1,0 +1,177 @@
+.footer {
+  border-top: 1px solid #ddd;
+  padding: 4rem;
+  margin-top: 0;
+  background-color: #f8f8f8;
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.logoLeft {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: auto;
+  aspect-ratio: 1;
+  background-image: url('/sttc logo cl.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateX(-50%);
+  z-index: 0;
+  filter: hue-rotate(var(--left-hue, 0deg)) brightness(var(--left-brightness, 1)) saturate(var(--left-saturation, 1));
+  transition: filter 0.1s ease-out;
+  pointer-events: none;
+}
+
+.logoRight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: auto;
+  aspect-ratio: 1;
+  background-image: url('/sttc logo cl.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateX(50%) rotate(180deg) scaleX(-1);
+  z-index: 0;
+  filter: hue-rotate(var(--right-hue, 0deg)) brightness(var(--right-brightness, 1)) saturate(var(--right-saturation, 1));
+  transition: filter 0.1s ease-out;
+  pointer-events: none;
+}
+
+.content {
+  max-width: 1400px;
+  margin: 0 auto 4rem auto;
+  padding-left: 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter {
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletterInput {
+  width: 500px;
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  transition: border-color 0.2s;
+}
+
+.newsletterInput:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.newsletterButton {
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.newsletterButton:hover {
+  background-color: #555;
+}
+
+.section h4 {
+  font-family: 'WhatsHappened', 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #333;
+}
+
+.section ul {
+  list-style: none;
+}
+
+.section li {
+  margin-bottom: 0.75rem;
+}
+
+.section a {
+  color: #666;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.section a:hover {
+  color: #333;
+}
+
+.separator {
+  width: 50%;
+  max-width: 400px;
+  height: 1px;
+  background-color: #ddd;
+  margin: 0 auto 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.legal {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  font-size: 0.75rem;
+}
+
+.legal a {
+  color: #666;
+  transition: color 0.2s;
+}
+
+.legal a:hover {
+  color: #333;
+}
+
+.divider {
+  margin: 0 1rem;
+  color: #999;
+}
+
+.bottom {
+  text-align: center;
+  color: #999;
+  font-size: 0.63rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 2rem;
+  }
+  
+  .content {
+    gap: 2rem;
+  }
+}

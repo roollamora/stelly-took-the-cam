@@ -1,0 +1,445 @@
+.testPage {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Left Menu */
+.leftMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 20px;
+  background-color: transparent;
+  transition: width 0.4s ease, background-color 0.4s ease;
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+}
+
+.leftMenu.visible {
+  width: 250px;
+  background-color: rgba(248, 235, 215, 0.95);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.coloredBars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(0deg, 
+      #ff6b9d 0%, #ff6b9d 0.9%,
+      #4ecdc4 0.9%, #4ecdc4 1.6%,
+      #ffe66d 1.6%, #ffe66d 2.85%,
+      #ff8b94 2.85%, #ff8b94 3.6%,
+      #95e1d3 3.6%, #95e1d3 4.75%,
+      #a8e6cf 4.75%, #a8e6cf 5.4%,
+      #ffd93d 5.4%, #ffd93d 6.55%,
+      #6c5ce7 6.55%, #6c5ce7 7.15%,
+      #fd79a8 7.15%, #fd79a8 8.4%,
+      #00b894 8.4%, #00b894 9.45%,
+      #fab1a0 9.45%, #fab1a0 10.05%,
+      #74b9ff 10.05%, #74b9ff 11.3%,
+      #a29bfe 11.3%, #a29bfe 12.4%,
+      #55efc4 12.4%, #55efc4 13.05%,
+      #ffeaa7 13.05%, #ffeaa7 14.2%,
+      #ff7675 14.2%, #ff7675 15.45%,
+      #fdcb6e 15.45%, #fdcb6e 16.1%,
+      #e17055 16.1%, #e17055 17.25%,
+      #00cec9 17.25%, #00cec9 18.4%,
+      #dfe6e9 18.4%, #dfe6e9 19.15%,
+      #ff6b9d 19.15%, #ff6b9d 20.3%,
+      #4ecdc4 20.3%, #4ecdc4 20.95%,
+      #ffe66d 20.95%, #ffe66d 22.1%,
+      #ff8b94 22.1%, #ff8b94 23.35%,
+      #95e1d3 23.35%, #95e1d3 24.1%,
+      #a8e6cf 24.1%, #a8e6cf 25.25%,
+      #ffd93d 25.25%, #ffd93d 25.9%,
+      #6c5ce7 25.9%, #6c5ce7 27.15%,
+      #fd79a8 27.15%, #fd79a8 28.2%,
+      #00b894 28.2%, #00b894 28.85%,
+      #fab1a0 28.85%, #fab1a0 30.1%,
+      #74b9ff 30.1%, #74b9ff 31.2%,
+      #a29bfe 31.2%, #a29bfe 31.85%,
+      #55efc4 31.85%, #55efc4 33%,
+      #ffeaa7 33%, #ffeaa7 34.25%,
+      #ff7675 34.25%, #ff7675 34.9%,
+      #fdcb6e 34.9%, #fdcb6e 36.05%,
+      #e17055 36.05%, #e17055 37.2%,
+      #00cec9 37.2%, #00cec9 37.95%,
+      #dfe6e9 37.95%, #dfe6e9 39.1%,
+      #ff6b9d 39.1%, #ff6b9d 40.35%,
+      #4ecdc4 40.35%, #4ecdc4 41%,
+      #ffe66d 41%, #ffe66d 42.15%,
+      #ff8b94 42.15%, #ff8b94 43.3%,
+      #95e1d3 43.3%, #95e1d3 43.95%,
+      #a8e6cf 43.95%, #a8e6cf 45.2%,
+      #ffd93d 45.2%, #ffd93d 46.25%,
+      #6c5ce7 46.25%, #6c5ce7 46.9%,
+      #fd79a8 46.9%, #fd79a8 48.15%,
+      #00b894 48.15%, #00b894 49.2%,
+      #fab1a0 49.2%, #fab1a0 50%,
+      #74b9ff 50%, #74b9ff 51.1%,
+      #a29bfe 51.1%, #a29bfe 52.2%,
+      #55efc4 52.2%, #55efc4 52.85%,
+      #ffeaa7 52.85%, #ffeaa7 54.1%,
+      #ff7675 54.1%, #ff7675 55.25%,
+      #fdcb6e 55.25%, #fdcb6e 55.9%,
+      #e17055 55.9%, #e17055 57.05%,
+      #00cec9 57.05%, #00cec9 58.2%,
+      #dfe6e9 58.2%, #dfe6e9 58.95%,
+      #ff6b9d 58.95%, #ff6b9d 60.1%,
+      #4ecdc4 60.1%, #4ecdc4 61.35%,
+      #ffe66d 61.35%, #ffe66d 62%,
+      #ff8b94 62%, #ff8b94 63.15%,
+      #95e1d3 63.15%, #95e1d3 64.3%,
+      #a8e6cf 64.3%, #a8e6cf 64.95%,
+      #ffd93d 64.95%, #ffd93d 66.2%,
+      #6c5ce7 66.2%, #6c5ce7 67.25%,
+      #fd79a8 67.25%, #fd79a8 67.9%,
+      #00b894 67.9%, #00b894 69.15%,
+      #fab1a0 69.15%, #fab1a0 70.2%,
+      #74b9ff 70.2%, #74b9ff 71%,
+      #a29bfe 71%, #a29bfe 72.15%,
+      #55efc4 72.15%, #55efc4 73.3%,
+      #ffeaa7 73.3%, #ffeaa7 73.95%,
+      #ff7675 73.95%, #ff7675 75.2%,
+      #fdcb6e 75.2%, #fdcb6e 76.25%,
+      #e17055 76.25%, #e17055 76.9%,
+      #00cec9 76.9%, #00cec9 78.15%,
+      #dfe6e9 78.15%, #dfe6e9 79.2%,
+      #ff6b9d 79.2%, #ff6b9d 79.85%,
+      #4ecdc4 79.85%, #4ecdc4 81.1%,
+      #ffe66d 81.1%, #ffe66d 82.35%,
+      #ff8b94 82.35%, #ff8b94 83%,
+      #95e1d3 83%, #95e1d3 84.15%,
+      #a8e6cf 84.15%, #a8e6cf 85.3%,
+      #ffd93d 85.3%, #ffd93d 85.95%,
+      #6c5ce7 85.95%, #6c5ce7 87.2%,
+      #fd79a8 87.2%, #fd79a8 88.25%,
+      #00b894 88.25%, #00b894 88.9%,
+      #fab1a0 88.9%, #fab1a0 90.15%,
+      #74b9ff 90.15%, #74b9ff 91.2%,
+      #a29bfe 91.2%, #a29bfe 91.85%,
+      #55efc4 91.85%, #55efc4 93.1%,
+      #ffeaa7 93.1%, #ffeaa7 94.25%,
+      #ff7675 94.25%, #ff7675 94.9%,
+      #fdcb6e 94.9%, #fdcb6e 96.15%,
+      #e17055 96.15%, #e17055 97.2%,
+      #00cec9 97.2%, #00cec9 97.85%,
+      #dfe6e9 97.85%, #dfe6e9 99.1%,
+      #fab1a0 99.1%, #fab1a0 100%
+    );
+  animation: colorBarShiftVertical 4s linear infinite;
+  opacity: 1;
+  transition: opacity 0.4s ease-out, filter 0.1s ease-out;
+  filter: hue-rotate(var(--hue-rotate, 0deg)) brightness(var(--brightness, 1)) saturate(var(--saturation, 1));
+  z-index: 1;
+}
+
+.leftMenu.visible .coloredBars {
+  opacity: 0;
+}
+
+.menuContent {
+  flex: 1;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.leftMenu.visible .menuContent {
+  opacity: 1;
+}
+
+.logo {
+  font-family: 'WhatsHappened', 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: #333;
+  text-decoration: none;
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.8;
+}
+
+@keyframes colorBarShiftVertical {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+/* Main Content */
+.content {
+  margin-left: 20px;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  transition: none;
+  position: relative;
+}
+
+.testContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.titleWrapper {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  pointer-events: none;
+  transition: top 0.3s ease;
+}
+
+.titleWrapper.shrinkWrapper {
+  top: 1rem;
+}
+
+.pageTitle {
+  font-family: 'Protest Demo', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 3.2rem;
+  color: rgba(248, 235, 215, 1);
+  text-align: center;
+  max-width: 1000px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: font-size 0.3s ease, letter-spacing 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+  display: inline-block;
+}
+
+.pageTitle::before {
+  content: 'TEST FADE EFFECT';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(60deg, 
+    transparent 0%, 
+    transparent calc(50% - 40px), 
+    rgba(0, 0, 0, 1) calc(50% - 40px), 
+    rgba(0, 0, 0, 1) calc(50% + 40px), 
+    transparent calc(50% + 40px), 
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  background-position: 200% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineSwipe 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.pageTitle.shrink {
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+}
+
+.pageTitle.shrink::before {
+  content: 'TEST FADE EFFECT';
+}
+
+@keyframes shineSwipe {
+  0% {
+    background-position: 200% 0;
+  }
+  11.43% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.postsContainer {
+  padding-top: 6rem;
+  position: relative;
+}
+
+/* Fade overlay - duplicate background layer positioned on top of posts */
+.fadeOverlay {
+  position: fixed;
+  top: 0;
+  left: 20px;
+  right: 0;
+  height: 100vh;
+  z-index: 50;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 3vh,
+    transparent 8vh,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 3vh,
+    transparent 8vh,
+    transparent 100%
+  );
+}
+
+/* Test Posts */
+.testPost {
+  margin-bottom: 4rem;
+  background-color: rgba(248, 235, 215, 0.8);
+  padding: 3rem;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 1rem;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.postScrollContainer {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  max-height: 400px;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 92%, transparent 100%);
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              -webkit-mask-image 0.3s ease,
+              mask-image 0.3s ease;
+}
+
+.postTitle {
+  font-family: 'WhatsHappened', 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.subtitleLine {
+  width: 60px;
+  height: 2px;
+  background-color: #666;
+  margin: 1rem 0;
+}
+
+.postSubtitle {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.postContentText {
+  font-family: 'Orbitron', 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #555;
+  text-align: justify;
+  width: 100%;
+}
+
+.postContentText p {
+  margin-bottom: 1rem;
+}
+
+.postContentText p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content {
+    margin-left: 20px;
+    padding: 2rem 1rem;
+  }
+  
+  .pageTitle {
+    font-size: 3rem;
+  }
+  
+  .postTitle {
+    font-size: 2rem;
+  }
+  
+  .testPost {
+    padding: 2rem;
+  }
+}
+
+/* Background layer - sits behind everything, fixed to viewport */
+.backgroundLayer {
+  position: fixed;
+  top: 0;
+  left: 20px;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.fadeOverlay {
+  position: fixed;
+  top: 0;
+  left: 20px;
+  right: 0;
+  height: 100vh;
+  z-index: 50;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 3vh,
+    transparent 8vh,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 3vh,
+    transparent 8vh,
+    transparent 100%
+  );
+}
+
+.testContainer {
+  position: relative;
+  z-index: 10;
+}

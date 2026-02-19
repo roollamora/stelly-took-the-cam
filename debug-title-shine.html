@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title vs Shine Debug</title>
+    <style>
+        @font-face {
+            font-family: 'Protest Demo';
+            src: url('./public/Fonts/Protest Demo.ttf') format('truetype');
+        }
+        
+        body {
+            background: #1a1a1a;
+            color: #f8ebd7;
+            padding: 2rem;
+            font-family: Arial, sans-serif;
+        }
+        
+        .debug-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            border: 1px solid #444;
+            background: #222;
+        }
+        
+        .title-original {
+            font-family: 'Protest Demo', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            font-weight: 400;
+            font-size: 3.2rem;
+            color: rgba(248, 235, 215, 1);
+            text-align: center;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            position: relative;
+            display: inline-block;
+            margin: 0;
+            line-height: 1;
+            padding: 0;
+            overflow: visible;
+            border: 2px solid red; /* Debug border */
+        }
+        
+        .title-with-shine {
+            font-family: 'Protest Demo', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            font-weight: 400;
+            font-size: 3.2rem;
+            color: rgba(248, 235, 215, 1);
+            text-align: center;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            position: relative;
+            display: inline-block;
+            margin: 0;
+            line-height: 1;
+            padding: 0;
+            overflow: visible;
+            border: 2px solid blue; /* Debug border */
+        }
+        
+        .title-with-shine::before {
+            content: 'PO\F455 ATOR LUMINIS';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Protest Demo', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            font-weight: 400;
+            font-size: 3.2rem;
+            letter-spacing: 0.1em;
+            text-align: center;
+            text-transform: uppercase;
+            white-space: nowrap;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(60deg, 
+                transparent 0%, 
+                transparent calc(50% - 40px), 
+                rgba(0, 0, 0, 1) calc(50% - 40px), 
+                rgba(0, 0, 0, 1) calc(50% + 40px), 
+                transparent calc(50% + 40px), 
+                transparent 100%
+            );
+            background-size: 200% 100%;
+            background-repeat: no-repeat;
+            background-position: 50% 0; /* Static position for debug */
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            pointer-events: none;
+            border: 2px solid green; /* Debug border for pseudo-element */
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #444;
+            padding: 0.5rem;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #333;
+        }
+        
+        .difference {
+            background: #440000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Title vs Shine Debug Comparison</h1>
+    
+    <div class="debug-section">
+        <h2>Original Title (Red Border)</h2>
+        <div class="title-original">PO&#xF455;ATOR LUMINIS</div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>Title with Shine Effect (Blue Border, Green for ::before)</h2>
+        <div class="title-with-shine">PO&#xF455;ATOR LUMINIS</div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>Property Comparison</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Title (.pageTitle)</th>
+                    <th>Shine (.pageTitle::before)</th>
+                    <th>Match?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Content</td>
+                    <td>PO&#xF455;ATOR LUMINIS (HTML entity)</td>
+                    <td>PO\F455 ATOR LUMINIS (CSS escape)</td>
+                    <td class="difference">Different format</td>
+                </tr>
+                <tr>
+                    <td>font-family</td>
+                    <td>'Protest Demo', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif</td>
+                    <td>'Protest Demo', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif</td>
+                    <td>✓ Match</td>
+                </tr>
+                <tr>
+                    <td>font-size</td>
+                    <td>3.2rem</td>
+                    <td>3.2rem</td>
+                    <td>✓ Match</td>
+                </tr>
+                <tr>
+                    <td>font-weight</td>
+                    <td>400</td>
+                    <td>400</td>
+                    <td>✓ Match</td>
+                </tr>
+                <tr>
+                    <td>letter-spacing</td>
+                    <td>0.1em</td>
+                    <td>0.1em</td>
+                    <td>✓ Match</td>
+                </tr>
+                <tr>
+                    <td>text-align</td>
+                    <td>center</td>
+                    <td>center</td>
+                    <td>✓ Match</td>
+                </tr>
+                <tr>
+                    <td>text-transform</td>
+                    <td>uppercase</td>
+                    <td>uppercase</td>
+                    <td>✓ Match</td>
+                </tr>
+                <tr>
+                    <td>white-space</td>
+                    <td>nowrap</td>
+                    <td>nowrap</td>
+                    <td>✓ Match</td>
+                </tr>
+                <tr>
+                    <td>line-height</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>✓ Match</td>
+                </tr>
+                <tr>
+                    <td>margin</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>✓ Match</td>
+                </tr>
+                <tr>
+                    <td>padding</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>✓ Match</td>
+                </tr>
+                <tr>
+                    <td>position</td>
+                    <td>relative</td>
+                    <td>absolute</td>
+                    <td class="difference">Different</td>
+                </tr>
+                <tr>
+                    <td>display</td>
+                    <td>inline-block</td>
+                    <td>block (default for ::before)</td>
+                    <td class="difference">Different</td>
+                </tr>
+                <tr>
+                    <td>color/fill</td>
+                    <td>rgba(248, 235, 215, 1)</td>
+                    <td>transparent (-webkit-text-fill-color)</td>
+                    <td class="difference">Different (by design)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="debug-section">
+        <h2>Key Issues Identified:</h2>
+        <ul>
+            <li><strong>Content Format:</strong> HTML entity vs CSS escape - should render the same glyph</li>
+            <li><strong>Position:</strong> Pseudo-element is absolutely positioned, might not align perfectly</li>
+            <li><strong>Display:</strong> Parent is inline-block, pseudo-element is block by default</li>
+            <li><strong>Clipping:</strong> background-clip: text might be cutting off parts of the glyph</li>
+        </ul>
+    </div>
+    
+    <div class="debug-section">
+        <h2>Potential Solutions:</h2>
+        <ul>
+            <li>Add display: inline-block to ::before pseudo-element</li>
+            <li>Ensure both use exact same character encoding</li>
+            <li>Check if font rendering differs between normal text and clipped text</li>
+            <li>Consider using a different approach like CSS mask instead of background-clip</li>
+        </ul>
+    </div>
+</body>
+</html>

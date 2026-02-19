@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title & Shine Settings</title>
+    <style>
+        @font-face {
+            font-family: 'Protest Demo';
+            src: url('./public/Fonts/Protest Demo.ttf') format('truetype');
+        }
+        
+        body {
+            background: #1a1a1a;
+            color: #f8ebd7;
+            padding: 2rem;
+            font-family: Arial, sans-serif;
+        }
+        
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #222;
+        }
+        
+        .settings-table th,
+        .settings-table td {
+            border: 1px solid #444;
+            padding: 0.8rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        .settings-table th {
+            background: #333;
+            font-weight: bold;
+        }
+        
+        .property {
+            font-family: 'Courier New', monospace;
+            color: #4CAF50;
+        }
+        
+        .value {
+            font-family: 'Courier New', monospace;
+            color: #FFC107;
+        }
+        
+        .section-header {
+            background: #444 !important;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .different {
+            background: #440000;
+        }
+        
+        .same {
+            background: #004400;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complete Page Title & Shine Settings Comparison</h1>
+    
+    <table class="settings-table">
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Page Title (.pageTitle)</th>
+                <th>Shine Text (.pageTitle::before)</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="section-header">
+                <td colspan="4"><strong>CONTENT & TEXT</strong></td>
+            </tr>
+            <tr>
+                <td class="property">content</td>
+                <td class="value">PO&#xF455;ATOR LUMINIS (HTML entity)</td>
+                <td class="value">'PO\F455 ATOR LUMINIS' (CSS escape)</td>
+                <td class="different">Different format, same glyph</td>
+            </tr>
+            
+            <tr class="section-header">
+                <td colspan="4"><strong>FONT PROPERTIES</strong></td>
+            </tr>
+            <tr>
+                <td class="property">font-family</td>
+                <td class="value">'Protest Demo', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif</td>
+                <td class="value">'Protest Demo', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            <tr>
+                <td class="property">font-weight</td>
+                <td class="value">400</td>
+                <td class="value">400</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            <tr>
+                <td class="property">font-size</td>
+                <td class="value">3.2rem</td>
+                <td class="value">3.2rem</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            <tr>
+                <td class="property">font-size (shrunk)</td>
+                <td class="value">1rem</td>
+                <td class="value">1rem</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            
+            <tr class="section-header">
+                <td colspan="4"><strong>TEXT FORMATTING</strong></td>
+            </tr>
+            <tr>
+                <td class="property">letter-spacing</td>
+                <td class="value">0.1em</td>
+                <td class="value">0.1em</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            <tr>
+                <td class="property">letter-spacing (shrunk)</td>
+                <td class="value">0.15em</td>
+                <td class="value">0.15em</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            <tr>
+                <td class="property">text-align</td>
+                <td class="value">center</td>
+                <td class="value">center</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            <tr>
+                <td class="property">text-transform</td>
+                <td class="value">uppercase</td>
+                <td class="value">uppercase</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            <tr>
+                <td class="property">white-space</td>
+                <td class="value">nowrap</td>
+                <td class="value">nowrap</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            <tr>
+                <td class="property">line-height</td>
+                <td class="value">1</td>
+                <td class="value">1</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            
+            <tr class="section-header">
+                <td colspan="4"><strong>POSITIONING & LAYOUT</strong></td>
+            </tr>
+            <tr>
+                <td class="property">position</td>
+                <td class="value">relative</td>
+                <td class="value">absolute</td>
+                <td class="different">Different (by design)</td>
+            </tr>
+            <tr>
+                <td class="property">display</td>
+                <td class="value">inline-block</td>
+                <td class="value">block (default for ::before)</td>
+                <td class="different">Different</td>
+            </tr>
+            <tr>
+                <td class="property">top</td>
+                <td class="value">N/A (relative)</td>
+                <td class="value">-0.1em</td>
+                <td class="different">Pseudo-element offset</td>
+            </tr>
+            <tr>
+                <td class="property">left</td>
+                <td class="value">N/A (relative)</td>
+                <td class="value">0</td>
+                <td class="different">Pseudo-element positioned</td>
+            </tr>
+            <tr>
+                <td class="property">width</td>
+                <td class="value">auto (content width)</td>
+                <td class="value">100%</td>
+                <td class="different">Pseudo-element fills parent</td>
+            </tr>
+            <tr>
+                <td class="property">height</td>
+                <td class="value">auto (content height)</td>
+                <td class="value">calc(100% + 0.2em)</td>
+                <td class="different">Pseudo-element taller</td>
+            </tr>
+            
+            <tr class="section-header">
+                <td colspan="4"><strong>SPACING & MARGINS</strong></td>
+            </tr>
+            <tr>
+                <td class="property">margin</td>
+                <td class="value">0</td>
+                <td class="value">0</td>
+                <td class="same">✓ Same</td>
+            </tr>
+            <tr>
+                <td class="property">padding</td>
+                <td class="value">0</td>
+                <td class="value">0.1em 0 0 0</td>
+                <td class="different">Pseudo-element has top padding</td>
+            </tr>
+            
+            <tr class="section-header">
+                <td colspan="4"><strong>VISUAL EFFECTS</strong></td>
+            </tr>
+            <tr>
+                <td class="property">color</td>
+                <td class="value">rgba(248, 235, 215, 1)</td>
+                <td class="value">N/A (transparent)</td>
+                <td class="different">Pseudo-element uses background</td>
+            </tr>
+            <tr>
+                <td class="property">background</td>
+                <td class="value">none</td>
+                <td class="value">linear-gradient(60deg, ...)</td>
+                <td class="different">Pseudo-element has gradient</td>
+            </tr>
+            <tr>
+                <td class="property">background-clip</td>
+                <td class="value">N/A</td>
+                <td class="value">text</td>
+                <td class="different">Clips background to text shape</td>
+            </tr>
+            <tr>
+                <td class="property">-webkit-text-fill-color</td>
+                <td class="value">N/A</td>
+                <td class="value">transparent</td>
+                <td class="different">Makes text transparent</td>
+            </tr>
+            <tr>
+                <td class="property">overflow</td>
+                <td class="value">visible</td>
+                <td class="value">N/A</td>
+                <td class="different">Parent allows overflow</td>
+            </tr>
+            
+            <tr class="section-header">
+                <td colspan="4"><strong>ANIMATION</strong></td>
+            </tr>
+            <tr>
+                <td class="property">animation</td>
+                <td class="value">none</td>
+                <td class="value">shineSwipe 7s ease-in-out infinite</td>
+                <td class="different">Only pseudo-element animates</td>
+            </tr>
+            <tr>
+                <td class="property">animation-duration</td>
+                <td class="value">N/A</td>
+                <td class="value">7s (0.8s movement + 6.2s wait)</td>
+                <td class="different">Pseudo-element only</td>
+            </tr>
+            <tr>
+                <td class="property">background-position</td>
+                <td class="value">N/A</td>
+                <td class="value">200% 0 → -100% 0</td>
+                <td class="different">Animates right to left</td>
+            </tr>
+            
+            <tr class="section-header">
+                <td colspan="4"><strong>GRADIENT STRIPE SETTINGS</strong></td>
+            </tr>
+            <tr>
+                <td class="property">gradient-angle</td>
+                <td class="value">N/A</td>
+                <td class="value">60deg</td>
+                <td class="different">Creates 30° tilt</td>
+            </tr>
+            <tr>
+                <td class="property">stripe-width</td>
+                <td class="value">N/A</td>
+                <td class="value">120px (50% ± 60px)</td>
+                <td class="different">Black stripe width</td>
+            </tr>
+            <tr>
+                <td class="property">stripe-color</td>
+                <td class="value">N/A</td>
+                <td class="value">rgba(0, 0, 0, 1)</td>
+                <td class="different">Solid black</td>
+            </tr>
+            <tr>
+                <td class="property">background-size</td>
+                <td class="value">N/A</td>
+                <td class="value">200% 100%</td>
+                <td class="different">Allows animation range</td>
+            </tr>
+            
+            <tr class="section-header">
+                <td colspan="4"><strong>CONTAINER SETTINGS</strong></td>
+            </tr>
+            <tr>
+                <td class="property">titleWrapper position</td>
+                <td class="value" colspan="2">fixed</td>
+                <td class="same">Fixed to viewport</td>
+            </tr>
+            <tr>
+                <td class="property">titleWrapper z-index</td>
+                <td class="value" colspan="2">200</td>
+                <td class="same">Above fade overlay (50)</td>
+            </tr>
+            <tr>
+                <td class="property">titleWrapper top</td>
+                <td class="value" colspan="2">2rem (normal) / 1rem (shrunk)</td>
+                <td class="same">Responsive positioning</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2>Key Issues & Solutions:</h2>
+    <ul>
+        <li><strong>Clipping Issue:</strong> background-clip: text can clip tall letters/glyphs</li>
+        <li><strong>Alignment:</strong> Pseudo-element needs exact same font properties</li>
+        <li><strong>Height:</strong> calc(100% + 0.2em) makes pseudo-element taller to prevent clipping</li>
+        <li><strong>Padding:</strong> 0.1em top padding gives text breathing room</li>
+        <li><strong>Position:</strong> -0.1em top offset compensates for extra height</li>
+    </ul>
+</body>
+</html>
