@@ -51,6 +51,10 @@ export interface GalleryCollection extends BaseEntity {
   isPublic: boolean
   sortOrder: number
   seo: SEOMetadata
+  dateRange?: {
+    start?: string
+    end?: string
+  }
 }
 
 // Project Schema
@@ -144,6 +148,7 @@ export interface GalleryImage extends BaseEntity {
   dimensions: ImageDimensions
   metadata: ImageMetadata
   sortOrder: number
+  photoDate?: string
 }
 
 export interface ImageDimensions {

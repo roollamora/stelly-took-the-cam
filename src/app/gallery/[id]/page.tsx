@@ -204,13 +204,13 @@ export default function CollectionPage() {
                     month: 'short', 
                     day: 'numeric' 
                   })}`
-                ) : (
+                ) : collection.dateRange.end ? (
                   `Until ${new Date(collection.dateRange.end).toLocaleDateString('en-US', { 
                     year: 'numeric', 
                     month: 'short', 
                     day: 'numeric' 
                   })}`
-                )}
+                ) : null}
               </p>
             )}
             
