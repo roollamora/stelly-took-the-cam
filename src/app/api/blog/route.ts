@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getDatabase } from '@/lib/database/sqlite'
+import { getDatabase } from '@/lib/database'
 
 // GET /api/blog - Get all blog posts
 export async function GET(request: NextRequest) {

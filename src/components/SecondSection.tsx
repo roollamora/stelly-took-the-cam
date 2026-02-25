@@ -205,11 +205,17 @@ export default function SecondSection() {
       <div className={styles.gridContainer} id="grid-container">
         <div 
           className={styles.leftShadow} 
-          style={{ opacity: leftShadowOpacity }}
+          style={{ 
+            opacity: leftShadowOpacity,
+            pointerEvents: 'none'
+          }}
         ></div>
         <div 
           className={styles.rightShadow} 
-          style={{ opacity: rightShadowOpacity }}
+          style={{ 
+            opacity: rightShadowOpacity,
+            pointerEvents: 'none'
+          }}
         ></div>
         
         <div className={styles.grid}>

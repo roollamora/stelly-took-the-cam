@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getCollectionById, updateCollection, deleteCollection } from '@/lib/database/sqlite';
+import { getCollectionById, updateCollection, deleteCollection } from '@/lib/database';
 
 export async function GET(
   request: Request,

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getDatabase } from '../../../lib/database/sqlite'
+import { getDatabase } from '@/lib/database'
 
 interface RecentContentItem {
   type: 'blog' | 'gallery' | 'project' | 'collaboration'

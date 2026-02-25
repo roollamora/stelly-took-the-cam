@@ -32,3 +32,8 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Sample/test data (don't deploy)
+/public/filler/
+/public/blog-images/
+/public/gallery/

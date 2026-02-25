@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { updateImage } from '@/lib/database/sqlite';
+import { updateImage } from '@/lib/database';
 
 export async function PUT(
   request: Request,
