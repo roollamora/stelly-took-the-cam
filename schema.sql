@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS collections (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL UNIQUE,
     description TEXT,
-    cover_image_url TEXT,
+    cover_image TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -11,10 +11,9 @@ CREATE TABLE IF NOT EXISTS collections (
 CREATE TABLE IF NOT EXISTS images (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     collection_id INTEGER NOT NULL,
-    url TEXT NOT NULL,
+    filename TEXT NOT NULL,
     title TEXT,
     description TEXT,
-    alt_text TEXT,
     width INTEGER,
     height INTEGER,
     display_order INTEGER DEFAULT 0,
@@ -37,7 +36,7 @@ CREATE TABLE IF NOT EXISTS blog_posts (
     title TEXT NOT NULL,
     excerpt TEXT,
     content TEXT NOT NULL,
-    cover_image_url TEXT,
+    cover_image TEXT,
     author TEXT DEFAULT 'Stelly',
     published_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -51,8 +50,8 @@ CREATE TABLE IF NOT EXISTS projects (
     slug TEXT NOT NULL UNIQUE,
     title TEXT NOT NULL,
     description TEXT,
-    content TEXT NOT NULL,
-    cover_image_url TEXT,
+    content TEXT,
+    cover_image TEXT,
     client TEXT,
     role TEXT,
     year INTEGER,
@@ -67,10 +66,10 @@ CREATE TABLE IF NOT EXISTS projects (
 CREATE TABLE IF NOT EXISTS project_images (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     project_id INTEGER NOT NULL,
-    url TEXT NOT NULL,
+    filename TEXT NOT NULL,
     caption TEXT,
-    alt_text TEXT,
     display_order INTEGER DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE
 );
 
@@ -80,10 +79,10 @@ CREATE TABLE IF NOT EXISTS collaborations (
     slug TEXT NOT NULL UNIQUE,
     title TEXT NOT NULL,
     description TEXT,
-    content TEXT NOT NULL,
-    cover_image_url TEXT,
-    collaborator_name TEXT,
-    collaborator_role TEXT,
+    content TEXT,
+    cover_image TEXT,
+    collaborator TEXT,
+    role TEXT,
     year INTEGER,
     tags TEXT,
     display_order INTEGER DEFAULT 0,
@@ -96,10 +95,10 @@ CREATE TABLE IF NOT EXISTS collaborations (
 CREATE TABLE IF NOT EXISTS collaboration_images (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     collaboration_id INTEGER NOT NULL,
-    url TEXT NOT NULL,
+    filename TEXT NOT NULL,
     caption TEXT,
-    alt_text TEXT,
     display_order INTEGER DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (collaboration_id) REFERENCES collaborations(id) ON DELETE CASCADE
 );
 
